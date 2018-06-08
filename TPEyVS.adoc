@@ -1,0 +1,53 @@
+= Especificacion y verificación de Software: Trabajo Práctico
+
+Sebastian Posadas <posadas.sca@gmail.com>; Yair Ruiz_Barbás <yair.ruizbarbas@gmail.com>; Juan Bianchini <juangabrielbianchini@gmail.com>; Alan Ramirez <alan.ramirez.96714@gmail.com>
+
+
+v1, {docdate}. Docentes Ivo Koch y Federico Lamuedra
+
+:source-highlighter: coderay
+:numbered:
+:tabsize: 4
+
+
+== Introduccion
+
+En la siguiente reseña se explicara el funcinamiento de los siguientes servicios:
+
+=== Diagrama de clases de implementación de servicios para la aplicación web.
+
+
+NotificadorService:: El servicio de Notificador, es el encargado de enviarle a el StreamingService, MusicoService, LoginService, BandaService, AvisoService notificaciones. Como también se encarga de enviar emails.
+
+StreamingService:: El servicio de Streaming, se encarga crear una sesion, de iniciar una transmision en vivo entre 1 o varios musicos, como así tambien finalizar dicha sesion y cancelar una sesion de Streaming.
+
+MusicoService:: El servicio del Musico, se encarga de contactar con otros musicos del sitio a traves de los perfiles o por ofrecimientos.
+
+LoginService:: El servicio de Login, ofrece la posibilidad de registrar usuarios y loggearlos en el sitio web. Recibiendo un Array de datos del usuario.
+
+AvisoService:: El servicio de Aviso, es el encargado de finalizar los avisos creados por las bandas y solicita un motivo. Y por otra parte, finaliza los avisos de acuerdo al tiempo de vida del mismo.
+
+AdministradorService:: El servicio del Administrador, tiene como proposito el dar la posibilidad de registrar los instrumentos, generos musicales y 
+
+BandaService:: El servicio de Banda, se encarga de contactar con otras bandas de acuerdo a los avisos y los músicos pasados como parámetros.
+
+ReportesService:: El servicio de Reportes, es el encargado de generar los reportes que seran analizados por el gerente comercial; la cantidad de bandas y 
+musicos que se registraron en un periodo dado , la cantidad de musicos que terminaron con concretar su incorporacion a una banda y la cantidad de contactos realizados entre los musicos.
+
+CalificacionService:: El servicio de Calificacion, brinda los metodos para calcular la reputacion de los musicos y de las bandas que son pasadas como argumentos. 
+
+
+=== Diagrama de clases de implementación de servicios para el backend. 
+
+
+MatchService:: El servicio de Match, es el encargado de recibir los ofrecimientos y los avisos, y generar los respectivos matcheos. 
+
+NotifService:: El servicio de Notificacion, ofrece el metodo de crear una notificacion con un titulo y una breve descripcion y notificar a todos los usuarios sus respectivas notificaciones.
+
+BandaService:: El servicio de Banda, ofrece la funcion de obtener los avisos de las bandas.
+
+MusicoService:: El servicio de Musico, ofrece la funcion de obtener los ofrecimientos de los musicos.
+
+CronService:: El servicio de Cronometro, se encarga de correr los demas procesos de acuerdo a un lapso de tiempo preestablecido.
+
+AvisoService:: El servicio de Aviso, habilita la posibilidad de finalizar todos los avisos.
