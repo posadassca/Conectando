@@ -1,4 +1,5 @@
-=Especificacion y verficaion de Software: Trabajo Práctico
+
+= Especificacion y verficaion de Software: Trabajo Práctico
 
  Sebastian Posadas <posadas.sca@gmail.com>; Yair Ruiz_Barbás <yair.ruizbarbas@gmail.com>; Juan Bianchini <juangabrielbianchini@gmail.com>; Alan Ramirez <alan.ramirez.96714@gmail.com>
 {docdate}. Docentes Ivo Koch y Federico Lamuedra
@@ -7,11 +8,11 @@
 :tabsize: 4
 
 
-==Introduccion
+== Introduccion
 
 En la siguiente reseña se explicara el funcinamiento de los siguientes servicios:
 
-===Diagrama de clases de implementación de la capa de domain model y servicios para la aplicación web de Grails.
+=== Diagrama de clases de implementación de la capa de domain model y servicios para la aplicación web de Grails.
 
 Diagrama de clases de implementación de la capa de domain model y servicios para la aplicación web de Grails.
 
