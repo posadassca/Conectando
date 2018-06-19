@@ -100,7 +100,7 @@ environments:
         dataSource:
             dbCreate: create-drop
             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-            url: jdbc:mysql://localhost:3306/musicosapp
+            url: jdbc:mysql://localhost:3306/tpesp
 
     test:
         dataSource:
