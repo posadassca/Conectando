@@ -7,5 +7,7 @@ class Instrumento {
     static belongsTo = Musico
 
     static constraints = {
+        nombre blank:false
+
     }
 }

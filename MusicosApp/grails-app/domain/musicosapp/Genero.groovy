@@ -8,5 +8,6 @@ class Genero {
     static belongsTo = [Musico, Banda]
 
     static constraints = {
+        nombre blank:false
     }
 }

@@ -7,5 +7,6 @@ class AvisoVsRol {
     static hasOne = [rol: Rol, aviso: Aviso]
 
     static constraints = {
+        añosDeExperiencia blank: true
     }
 }

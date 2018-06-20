@@ -4,8 +4,12 @@ class TemaAlbum {
 
     String nombre
     String duracion
-    Banda banda
+
+    static hasOne = Album
 
     static constraints = {
+        nombre blank:false
+        duracion blank:true
+
     }
 }

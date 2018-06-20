@@ -6,5 +6,7 @@ class ExpInstrumento {
 
     static hasOne = [musico: Musico, intrumento: Instrumento]
     static constraints = {
+        descripcion blank:true
+        años blank:true
     }
 }

@@ -8,5 +8,6 @@ class Rol {
     static hasMany = [avisosVsRoles: AvisoVsRol, expBandas: ExpBanda]
 
     static constraints = {
+        nombre blank:false
     }
 }

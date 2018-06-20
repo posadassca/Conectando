@@ -12,5 +12,8 @@ class Aviso {
 
 
     static constraints = {
+        titulo blank:false
+        descripcion blank:false
+        fechaLimite blank:true
     }
 }
