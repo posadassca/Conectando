@@ -94,6 +94,19 @@ class BootStrap {
         greenday.addToMusicos(trecool)
         greenday.save()
 
+        sum41.addToMusicos(deryckwhibley)
+        sum41.addToMusicos(conemccaslin)
+        sum41.addToMusicos(steveo)
+        sum41.addToMusicos(sven)
+        sum41.save()
+
+        blink182.addToMusicos(tomdelounge)
+        blink182.addToMusicos(markhopus)
+        blink182.addToMusicos(travisbarker)
+        blink182.save()
+
+
+
 
     }
     def destroy = {
