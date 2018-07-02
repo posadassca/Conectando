@@ -1,17 +1,14 @@
 package backend.test.DAOs;
 
-import backend.DAOs.MusicoDAO;
-import backend.domainModel.Banda;
-import backend.domainModel.Musico;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
 
 import org.junit.Test;
 
+import backend.DAOs.MusicoDAO;
+import backend.domainModel.Musico;
+
 public class JPADAOTest {
+
 	@Test
 	public void crearMusicoTest() {
 		
@@ -49,4 +46,6 @@ public class JPADAOTest {
 	public void actualizarMusicoTest() {
 		
 	}
+	
 }
+
