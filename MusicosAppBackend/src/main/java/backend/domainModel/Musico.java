@@ -9,17 +9,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
 public class Musico {
 
+	@Id
+	@GeneratedValue
 	private Integer Id_Musico;
+	
 	private String nombre;
 	private String descripcion;
-	private Banda banda;
+
+	@ManyToMany(cascade=CascadeType.ALL)
+	private List<Banda> bandas = new ArrayList<Banda>();
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Instrumento> instrumentos = new ArrayList<Instrumento>();
+
 	public Musico(){
 		
 	}
@@ -29,8 +40,6 @@ public class Musico {
 		this.descripcion = descripcion;
 	}
 
-	@Id
-	@GeneratedValue
 	public Integer getId() {
 		return Id_Musico;
 	}
@@ -55,36 +64,32 @@ public class Musico {
 		this.descripcion = descripcion;
 	}
 	
-	public void setBanda(Banda banda) {
-		this.banda = banda;
+	public List<Banda> getBandas(){
+		return bandas;
 	}
 	
-	
-	
-	@ManyToOne(cascade= CascadeType.ALL)
-	public Banda getBanda() {
-		return banda;
+	public void agregarBanda(Banda banda){
+		
+		if (!bandas.contains(banda)){					
+			this.bandas.add(banda);
+			banda.agregarMusico(this);
+		}
 	}
 	
-//	@ManyToMany(mappedBy = "musicos")
-//	private List<Banda> bandas = new ArrayList<Banda>();
-//	
-//	public List<Banda> getBandas(){
-//		return bandas;
-//	}
+	public void eliminarBanda(Banda banda){
+		
+		if (bandas.contains(banda)){
+			this.bandas.remove(banda);
+		}
 	
+	}
 	
-//	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
-//	public List<Ofrecimiento> getOfrecimientos() {
-//		return ofrecimientos;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Instrumento> instrumentos = new ArrayList<Instrumento>();
-//	public List<Instrumento> getInstrumentos() {
-//		return instrumentos;
-//	}
+	public List<Ofrecimiento> getOfrecimientos() {
+		return ofrecimientos;
+	}
+	
+	public List<Instrumento> getInstrumentos() {
+		return instrumentos;
+	}
 	
 }

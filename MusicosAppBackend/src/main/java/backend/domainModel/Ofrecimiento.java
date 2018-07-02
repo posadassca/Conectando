@@ -15,9 +15,22 @@ import javax.persistence.OneToOne;
 @Entity
 public class Ofrecimiento {
 
-	
+	@Id
+	@GeneratedValue
 	private Integer Id_Ofrecimiento;
 	private String descripcion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Musico musico;
+	
+	@OneToMany(mappedBy = "ofrecimiento", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Match> matches;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Instrumento> instrumentos = new ArrayList<Instrumento>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<GeneroMusical> generos_musicales = new ArrayList<GeneroMusical>();
 	
 	Ofrecimiento(){
 		
@@ -29,8 +42,7 @@ public class Ofrecimiento {
 		this.descripcion = descripcion;
 	}
 
-	@Id
-	@GeneratedValue
+	
 	public Integer getId() {
 		return Id_Ofrecimiento;
 	}
@@ -47,34 +59,21 @@ public class Ofrecimiento {
 		this.descripcion = descripcion;
 	}
 
-//	public void agregarMusico(Musico music) {
-//		// TODO Auto-generated method stub
-//		this.musico = music;
-//	}
+	public Musico getMusico() {
+		return musico;
+	}
 	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	private Musico musico;
-//	public Musico getMusico() {
-//		return musico;
-//	}
-//	
-//	@OneToMany(mappedBy = "ofrecimiento", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private ArrayList<Match> matches;
-//	public List<Match> getMatches(){
-//		return matches;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Instrumento> instrumentos = new ArrayList<Instrumento>();
-//	public List<Instrumento> getInstrumentos(){
-//		return instrumentos;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<GeneroMusical> generos_musicales = new ArrayList<GeneroMusical>();
-//	public List<GeneroMusical> getGenerosMusicales(){
-//		return generos_musicales;
-//	}
+	public List<Match> getMatches(){
+		return matches;
+	}
+	
+	public List<Instrumento> getInstrumentos(){
+		return instrumentos;
+	}
+	
+	public List<GeneroMusical> getGenerosMusicales(){
+		return generos_musicales;
+	}
 	
 	
 	

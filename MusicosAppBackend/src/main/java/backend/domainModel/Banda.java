@@ -15,10 +15,15 @@ import javax.persistence.OneToMany;
 public class Banda {
 
 	
+	@Id
+	@GeneratedValue
 	private Integer Id_Banda;
 	private String nombre;
 	private String descripcion;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Musico> musicos = new ArrayList<Musico>();
+	
 	Banda() {
 
 	}
@@ -28,8 +33,6 @@ public class Banda {
 		this.descripcion = descripcion;
 	}
 
-	@Id
-	@GeneratedValue
 	public Integer getId() {
 		return Id_Banda;
 	}
@@ -54,9 +57,6 @@ public class Banda {
 		this.descripcion = descripcion;
 	}
 	
-	@OneToMany(mappedBy = "banda", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Musico> musicos = new ArrayList<Musico>();
-	
 	public List<Musico> getMusicos() {
 		return musicos;
 	}
@@ -67,7 +67,7 @@ public class Banda {
 //	public List<Aviso> getAvisos(){
 //		return avisos;
 //	}
-	/*
+	
 	public void agregarMusico(Musico musico){
 		
 		if (!musicos.contains(musico)){					
@@ -83,5 +83,5 @@ public class Banda {
 		}
 	
 	}
-	*/
+	
 }

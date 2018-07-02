@@ -12,12 +12,6 @@ public class MusicoDAO extends DAOJPA<Musico> implements interfaceMusicoDAO {
 		return null;
 	}
 
-	public void addBanda(Musico musico, Banda banda) {
-		// TODO Auto-generated method stub
-//		if (!musico.getBandas().contains(banda))
-//			musico.getBandas().add(banda);
-//		if (!banda.getMusicos().contains(musico))
-//			banda.getMusicos().add(musico);
-	}
+	
 
 }
