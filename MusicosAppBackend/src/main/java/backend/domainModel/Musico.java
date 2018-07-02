@@ -17,7 +17,7 @@ public class Musico {
 
 	@Id
 	@GeneratedValue
-	private Integer Id_Musico;
+	private Long Id_Musico;
 	
 	private String nombre;
 	private String descripcion;
@@ -40,11 +40,11 @@ public class Musico {
 		this.descripcion = descripcion;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return Id_Musico;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		Id_Musico = id;
 	}
 
@@ -90,6 +90,67 @@ public class Musico {
 	
 	public List<Instrumento> getInstrumentos() {
 		return instrumentos;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id_Musico == null) ? 0 : Id_Musico.hashCode());
+		result = prime * result + ((bandas == null) ? 0 : bandas.hashCode());
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((instrumentos == null) ? 0 : instrumentos.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((ofrecimientos == null) ? 0 : ofrecimientos.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Musico other = (Musico) obj;
+		if (Id_Musico == null) {
+			if (other.Id_Musico != null)
+				return false;
+		} else if (!Id_Musico.equals(other.Id_Musico))
+			return false;
+		if (bandas == null) {
+			if (other.bandas != null)
+				return false;
+		} else if (!bandas.equals(other.bandas))
+			return false;
+		if (descripcion == null) {
+			if (other.descripcion != null)
+				return false;
+		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (instrumentos == null) {
+			if (other.instrumentos != null)
+				return false;
+		} else if (!instrumentos.equals(other.instrumentos))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (ofrecimientos == null) {
+			if (other.ofrecimientos != null)
+				return false;
+		} else if (!ofrecimientos.equals(other.ofrecimientos))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Musico [Id_Musico=" + Id_Musico + ", nombre=" + nombre + ", descripcion=" + descripcion + ", bandas="
+				+ bandas + ", ofrecimientos=" + ofrecimientos + ", instrumentos=" + instrumentos + "]";
 	}
 	
 }

@@ -29,7 +29,7 @@ public class DAOJPA<T> implements interfaceDAO<T> {
 	public T crear(T t) {
 		abrir();
 		entityManager.getTransaction().begin();		
-		entityManager.persist(t);		
+		entityManager.persist(t);
 		entityManager.getTransaction().commit();
 		cerrar();
 		
@@ -54,6 +54,7 @@ public class DAOJPA<T> implements interfaceDAO<T> {
 	}
 
 	public T porId(long id){
+		abrir();
 		entityManager.getTransaction().begin();
 
 		 T resultado = (T) this.entityManager.find(entityClass, id);
