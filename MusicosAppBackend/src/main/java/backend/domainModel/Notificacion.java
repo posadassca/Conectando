@@ -8,9 +8,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Notificacion {
-
+	@Id
+	@GeneratedValue	
 	private Long Id_Notificacion;
 	private String descripcion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Match match;
 
 	
@@ -24,8 +27,7 @@ public class Notificacion {
 		this.descripcion = descripcion;
 	}
 	
-	@Id
-	@GeneratedValue	
+	
 	public Long getId() {
 		return Id_Notificacion;
 	}
@@ -46,8 +48,7 @@ public class Notificacion {
 		this.match = match;
 	}
 	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	public Match getMatch() {
-//		return match;
-//	}
+	public Match getMatch() {
+		return match;
+	}
 }

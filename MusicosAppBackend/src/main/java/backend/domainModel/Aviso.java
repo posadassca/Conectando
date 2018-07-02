@@ -16,24 +16,34 @@ import javax.persistence.OneToOne;
 @Entity
 public class Aviso {
 
-	
+	@Id
+	@GeneratedValue
 	private Long Id_Aviso;
 	private Date fecha_vencimiento;
 	private String descripcion;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Banda banda;
+	
+	@OneToMany(mappedBy = "aviso", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Match> matches = new ArrayList<Match>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Instrumento> instrumentos = new ArrayList<Instrumento>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<GeneroMusical> generos_musicales = new ArrayList<GeneroMusical>();
 	
 	Aviso(){
 		
 	}
 
-	public Aviso(Long id, Date fecha_vencimiento, String descripcion) {
-		super();
-		Id_Aviso = id;
+	public Aviso(Date fecha_vencimiento, String descripcion) {
 		this.fecha_vencimiento = fecha_vencimiento;
 		this.descripcion = descripcion;
 	}
 
-	@Id
-	@GeneratedValue
+	
 	public Long getId() {
 		return Id_Aviso;
 	}
@@ -58,29 +68,21 @@ public class Aviso {
 		this.descripcion = descripcion;
 	}
 	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	private Banda banda;
-//	public Banda getBanda() {
-//		return banda;
-//	}
-//	
-//	@OneToMany(mappedBy = "aviso", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private ArrayList<Match> matches;
-//	public List<Match> getMatches(){
-//		return matches;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Instrumento> instrumentos;
-//	public List<Instrumento> getInstrumentos() {
-//		return instrumentos;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<GeneroMusical> generos_musicales = new ArrayList<>();
-//	public List<GeneroMusical> getGenerosMusicales() {
-//		return generos_musicales;
-//	}
+	public Banda getBanda() {
+		return banda;
+	}
+	
+	public List<Match> getMatches(){
+		return matches;
+	}
+	
+	public List<Instrumento> getInstrumentos() {
+		return instrumentos;
+	}
+	
+	public List<GeneroMusical> getGenerosMusicales() {
+		return generos_musicales;
+	}
 	
 	
 	

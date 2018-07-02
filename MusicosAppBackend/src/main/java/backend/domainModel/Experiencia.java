@@ -7,7 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Experiencia {
 
-	
+	@Id
+	@GeneratedValue
 	private Long Id_Experiencia;
 	private Integer anios;
 	
@@ -15,14 +16,11 @@ public class Experiencia {
 		
 	}
 
-	public Experiencia(Long id, Integer anios) {
-		super();
-		Id_Experiencia = id;
+	public Experiencia(Integer anios) {
 		this.anios = anios;
 	}
 
-	@Id
-	@GeneratedValue
+	
 	public Long getId() {
 		return Id_Experiencia;
 	}

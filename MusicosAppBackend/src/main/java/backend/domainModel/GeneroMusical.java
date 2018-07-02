@@ -12,22 +12,25 @@ import javax.persistence.ManyToMany;
 @Entity
 public class GeneroMusical {
 
-	
+	@Id
+	@GeneratedValue
 	private Long Id_GeneroMusical;
 	private String nombre;
 
+	@ManyToMany(mappedBy = "generos_musicales")
+	private List<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
+	
+	@ManyToMany(mappedBy = "generos_musicales")
+	private List<Aviso> avisos = new ArrayList<Aviso>();
+	
 	GeneroMusical(){
 		
 	}
 
-	public GeneroMusical(Long id, String nombre) {
-		super();
-		Id_GeneroMusical = id;
+	public GeneroMusical(String nombre) {
 		this.nombre = nombre;
 	}
-
-	@Id
-	@GeneratedValue
+	
 	public Long getId() {
 		return Id_GeneroMusical;
 	}
@@ -44,15 +47,11 @@ public class GeneroMusical {
 		this.nombre = nombre;
 	}
 	
-//	@ManyToMany(mappedBy = "generos_musicales")
-//	private ArrayList<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
-//	public List<Ofrecimiento> getOfrecimientos(){
-//		return ofrecimientos;
-//	}
-//	
-//	@ManyToMany(mappedBy = "generos_musicales")
-//	private ArrayList<Aviso> avisos = new ArrayList<Aviso>();
-//	public List<Aviso> getAvisos() {
-//		return avisos;
-//	}
+	public List<Ofrecimiento> getOfrecimientos(){
+		return ofrecimientos;
+	}
+	
+	public List<Aviso> getAvisos() {
+		return avisos;
+	}
 }

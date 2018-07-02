@@ -10,24 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity
 public class Instrumento {
 
+	@Id
+	@GeneratedValue
 	private Long Id_Instrumento;
 	private String nombre;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Aviso> avisos = new ArrayList<Aviso>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Musico> musicos = new ArrayList<Musico>();
 	
 	Instrumento(){
 		
 	}
 
-	public Instrumento(Long id, String nombre) {
-		super();
-		Id_Instrumento = id;
+	public Instrumento(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	@Id
-	@GeneratedValue
 	public Long getId() {
 		return Id_Instrumento;
 	}
@@ -44,22 +53,16 @@ public class Instrumento {
 		this.nombre = nombre;
 	}
 	
-//	@ManyToMany(mappedBy = "instrumentos")
-//	private ArrayList<Aviso> avisos = new ArrayList<Aviso>();
-//	public List<Aviso> getAvisos(){
-//		return avisos;
-//	}
-//	
-//	@ManyToMany(mappedBy = "instrumentos")
-//	private ArrayList<Ofrecimiento> ofrecimientos = new ArrayList<Ofrecimiento>();
-//	public List<Ofrecimiento> getOfrecimientos(){
-//		return ofrecimientos;
-//	}
-//	
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Musico> musicos = new ArrayList<Musico>();
-//	public List<Musico> getMusicos() {
-//		return musicos;
-//	}
+	public List<Aviso> getAvisos(){
+		return avisos;
+	}
+	
+	public List<Ofrecimiento> getOfrecimientos(){
+		return ofrecimientos;
+	}
+	
+	public List<Musico> getMusicos() {
+		return musicos;
+	}
 	
 }
