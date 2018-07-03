@@ -1,6 +1,5 @@
 package backend.DAOs;
 
-import backend.domainModel.Banda;
 import backend.domainModel.Musico;
 import backend.interfaces.interfaceMusicoDAO;
 

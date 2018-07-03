@@ -8,10 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Aviso {
@@ -25,17 +23,10 @@ public class Aviso {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Banda banda;
 	
-	@OneToMany(mappedBy = "aviso", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Match> matches = new ArrayList<Match>();
+	@OneToMany(mappedBy = "aviso")
+	private List<AvisoRol> avisoRoles = new ArrayList<AvisoRol>();
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Instrumento> instrumentos = new ArrayList<Instrumento>();
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<GeneroMusical> generos_musicales = new ArrayList<GeneroMusical>();
-	
-	Aviso(){
-		
+	public Aviso(){
 	}
 
 	public Aviso(Date fecha_vencimiento, String descripcion) {
@@ -43,13 +34,12 @@ public class Aviso {
 		this.descripcion = descripcion;
 	}
 
-	
-	public Long getId() {
+	public Long getId_Aviso() {
 		return Id_Aviso;
 	}
 
-	private void setId(Long id) {
-		Id_Aviso = id;
+	public void setId_Aviso(Long id_Aviso) {
+		Id_Aviso = id_Aviso;
 	}
 
 	public Date getFecha_vencimiento() {
@@ -67,22 +57,19 @@ public class Aviso {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	public Banda getBanda() {
 		return banda;
 	}
-	
-	public List<Match> getMatches(){
-		return matches;
+
+	public void setBanda(Banda banda) {
+		this.banda = banda;
 	}
-	
-	public List<Instrumento> getInstrumentos() {
-		return instrumentos;
+
+	public List<AvisoRol> getAvisoRoles() {
+		return avisoRoles;
 	}
-	
-	public List<GeneroMusical> getGenerosMusicales() {
-		return generos_musicales;
-	}
+
 	
 	
 	

@@ -3,11 +3,9 @@ package backend.domainModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -19,26 +17,28 @@ public class Banda {
 	@GeneratedValue
 	private Integer Id_Banda;
 	private String nombre;
-	private String descripcion;
+	private String onda;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Musico> musicos = new ArrayList<Musico>();
+	@OneToMany(mappedBy = "banda")
+	private List<MusicoBanda> expBandas = new ArrayList<MusicoBanda>();
 	
-	Banda() {
+	@OneToMany(mappedBy = "banda")
+	private List<Aviso> avisos = new ArrayList<Aviso>();
 
+	public Banda() {
 	}
-
-	public Banda(String nombre, String descripcion) {
+	
+	public Banda(String nombre, String onda) {
 		this.nombre = nombre;
-		this.descripcion = descripcion;
+		this.onda = onda;
 	}
 
-	public Integer getId() {
+	public Integer getId_Banda() {
 		return Id_Banda;
 	}
 
-	public void setId(Integer id) {
-		Id_Banda = id;
+	public void setId_Banda(Integer id_Banda) {
+		Id_Banda = id_Banda;
 	}
 
 	public String getNombre() {
@@ -49,39 +49,38 @@ public class Banda {
 		this.nombre = nombre;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getOnda() {
+		return onda;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setOnda(String onda) {
+		this.onda = onda;
+	}
+
+	public List<MusicoBanda> getExpBandas() {
+		return expBandas;
+	}
+
+	public List<Aviso> getAvisos() {
+		return avisos;
 	}
 	
-	public List<Musico> getMusicos() {
-		return musicos;
-	}
 	
-//
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private ArrayList<Aviso> avisos = new ArrayList<Aviso>();
-//	public List<Aviso> getAvisos(){
-//		return avisos;
+	
+//	public void agregarMusico(Musico musico){
+//		
+//		if (!musicos.contains(musico)){					
+//			this.musicos.add(musico);
+//			musico.agregarBanda(this);
+//		}
 //	}
-	
-	public void agregarMusico(Musico musico){
-		
-		if (!musicos.contains(musico)){					
-			this.musicos.add(musico);
-			musico.agregarBanda(this);
-		}
-	}
-	
-	public void eliminarMusico(Musico musico){
-		
-		if (musicos.contains(musico)){
-			this.musicos.remove(musico);
-		}
-	
-	}
+//	
+//	public void eliminarMusico(Musico musico){
+//		
+//		if (musicos.contains(musico)){
+//			this.musicos.remove(musico);
+//		}
+//	
+//	}
 	
 }

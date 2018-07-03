@@ -65,6 +65,7 @@ public class DAOJPA<T> implements interfaceDAO<T> {
 	}
 	
 	public List<T> todos(){
+		abrir();
 		entityManager.getTransaction().begin();
 		
 		@SuppressWarnings("unchecked")
